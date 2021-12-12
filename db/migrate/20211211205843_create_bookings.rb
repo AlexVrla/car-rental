@@ -8,7 +8,7 @@ class CreateBookings < ActiveRecord::Migration[6.0]
       t.float :price
       t.references :user, null: false, foreign_key: true
       t.references :car, null: false, foreign_key: true
-      t.references :location
+
 
       t.timestamps
     end

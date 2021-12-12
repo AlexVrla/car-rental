@@ -1,4 +1,4 @@
 class Location < ApplicationRecord
-  has_many :occurrences_as_departure_location, class_name: "Booking", foreign_key: "location_id"
-  has_many :occurrences_as_arrival_location, class_name: "Booking", foreign_key: "location_id"
+  has_many :departure_locations, class_name: "Booking", foreign_key: "departure_location"
+  has_many :arrival_locations, class_name: "Booking", foreign_key: "arrival_location"
 end
