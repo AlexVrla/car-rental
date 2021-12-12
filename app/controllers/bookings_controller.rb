@@ -6,9 +6,9 @@ class BookingsController < ApplicationController
 
   def create
     @booking = Booking.new(booking_params)
-    @booking.user_id = User.create!.id
+    @booking.user_id = User.last.id
     if @booking.save
-      redirect_to booking_cars_path
+      redirect_to booking_cars_path(@booking.id)
     else
       render :new
     end

@@ -5,7 +5,6 @@ class CreateBookings < ActiveRecord::Migration[6.0]
       t.date :arrival_date
       t.integer :departure_time
       t.integer :arrival_time
-      t.float :price
       t.references :user, null: false, foreign_key: true
       t.references :car, null: false, foreign_key: true
 
