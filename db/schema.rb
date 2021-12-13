@@ -20,12 +20,13 @@ ActiveRecord::Schema.define(version: 2021_12_11_205843) do
     t.date "arrival_date"
     t.integer "departure_time"
     t.integer "arrival_time"
-    t.float "price"
     t.bigint "user_id", null: false
     t.bigint "car_id", null: false
+    t.bigint "location_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["car_id"], name: "index_bookings_on_car_id"
+    t.index ["location_id"], name: "index_bookings_on_location_id"
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end
 
@@ -49,8 +50,8 @@ ActiveRecord::Schema.define(version: 2021_12_11_205843) do
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
-    t.string "first_name", null: false
-    t.string "last_name", null: false
+    t.string "first_name", default: "", null: false
+    t.string "last_name", default: "", null: false
     t.date "date_of_birth"
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
@@ -61,6 +62,4 @@ ActiveRecord::Schema.define(version: 2021_12_11_205843) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "bookings", "cars"
-  add_foreign_key "bookings", "users"
 end

@@ -5,9 +5,9 @@ class CreateBookings < ActiveRecord::Migration[6.0]
       t.date :arrival_date
       t.integer :departure_time
       t.integer :arrival_time
-      t.references :user, null: false, foreign_key: true
-      t.references :car, null: false, foreign_key: true
-
+      t.belongs_to :user, null: false, index: true
+      t.belongs_to :car, null: false, index: true
+      t.belongs_to :location, index: true
 
       t.timestamps
     end
